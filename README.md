@@ -51,5 +51,33 @@ Here is a pre-start checklist:
 ---
 
 ## Implementation
+<details>
+<summary>
+    <b>  Phase 1 - Completion Date 9/16/2025 </b> </summary>
 
-** ADD YOUR IMPLEMENTATION DOCUMENTATION HERE **
+<br>
+
+1. Github Account ✅
+2. Forked Hivebox Project ✅ 
+3. Created Kanban Project Board ✅
+4. Created Issues (3 Phases for now) ✅
+
+> Note: Project is Universal, Issues need to be enabled in repos settings > features to create ne issues once project is linked.
+</details>
+
+<details>
+<summary>
+    <b> Phase 2 - Completion Date 9/17/2025 </b>
+</summary>
+
+<br>
+
+1. Initial version of HiveBox App (ie prints version) created.
+2. Created Dockerfile, python slim used.
+3. Docker need to be enabled before buildiing.
+4. Build and Run Docker (```docker build -t hivebox:0.0.1 .``` and ```docker run hivebox:0.0.1```)
+5. Added simple shell test file under ```Tests/phase2_test.sh``` run it in terminal via ```bash Tests/phase2_test.sh```
+6. git initialized locally and pulled from main branch. 
+
+
+  
