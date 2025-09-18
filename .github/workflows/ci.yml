@@ -49,12 +49,16 @@ jobs:
             # Step 8: Run container in background for testing
             - name: Run container
               run: docker run -d -p 8000:8000 hivebox:${GITHUB_SHA::7}
+            
+            # Step 9: Logs
+            - name: Check logs
+              run: docker logs $(docker ps -q --filter ancestor=hivebox:${GITHUB_SHA})
 
-            # Step 9: Test /version endpoint
+            # Step 10: Test /version endpoint
             - name: Test /version endpoint
               run: curl --fail http://localhost:8000/version | grep "0.0.1"
             
-            # Step 10: Test /temperature endpoint
+            # Step 11: Test /temperature endpoint
             - name: Test /temperature endpoint
               run: curl --fail http://localhost:8000/temperature | grep "average_temperature"
 
