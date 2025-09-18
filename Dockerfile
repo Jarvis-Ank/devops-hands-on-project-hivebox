@@ -7,10 +7,10 @@ WORKDIR /app
 # Install any needed packages specified in requirements.txt
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
-
 #creating a user other than root
-RUN adduser --disabled-password --gecos '' appuser
+# Combined into a single RUN instruction
+RUN pip install --no-cache-dir -r requirements.txt \
+    && adduser --disabled-password --gecos '' appuser
 
 # Copy the current directory contents into the container at /app
 COPY . .
