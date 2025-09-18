@@ -39,8 +39,8 @@ async def get_temperature():
      # In CI or if no API key is set, return a mock
     if os.getenv("CI") == "true":
         return {"average_temperature": 25,
-            "unit": "C",
-            "sources_used":3
+            "sources_used":3,
+            "timestamp_checked":""
         }
 
     temps = []
