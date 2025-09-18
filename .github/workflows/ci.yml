@@ -58,7 +58,9 @@ jobs:
 
             # Step 10: Test /version endpoint
             - name: Test /version endpoint
-              run: curl --fail http://localhost:8000/version | grep "0.0.1"
+              run: |
+               sleep 10  
+               curl --fail http://localhost:8000/version | grep "0.0.1"
             
             # Step 11: Test /temperature endpoint
             - name: Test /temperature endpoint
