@@ -18,6 +18,6 @@ COPY . .
 USER appuser
 
 # Start FastAPI app 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "hivebox.main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 #CMD ["python", "hivebox_app.py"] // Phase 3 changes
