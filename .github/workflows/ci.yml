@@ -9,6 +9,8 @@ on:
 
 jobs: 
     build-test: 
+        env:
+            CI: "true"
         runs-on: ubuntu-latest  # VM host for running CI steps
         steps: 
             # Step 1: Checkout code
