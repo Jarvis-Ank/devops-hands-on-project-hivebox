@@ -51,6 +51,11 @@ jobs:
               run: |
                 CONTAINER_ID=$(docker run -d -p 8000:8000 hivebox:${GITHUB_SHA::7})
                 echo "CONTAINER_ID=$CONTAINER_ID" >> $GITHUB_ENV
+                sleep 15
+                
+            # ADD THIS NEW STEP FOR DIAGNOSIS
+            - name: Check container status
+              run: docker ps -a
 
             # Step 9: Run integration tests against the container
             - name: Run integration tests
