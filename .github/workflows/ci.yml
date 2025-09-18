@@ -48,11 +48,13 @@ jobs:
 
             # Step 8: Run container in background for testing
             - name: Run container
-              run: docker run -d -p 8000:8000 hivebox:${GITHUB_SHA::7}
+              run: |
+                CONTAINER_ID=$(docker run -d -p 8000:8000 hivebox:${GITHUB_SHA::7})
+                echo "CONTAINER_ID=$CONTAINER_ID" >> $GITHUB_ENV
             
             # Step 9: Logs
             - name: Check logs
-              run: docker logs $(docker ps -q --filter ancestor=hivebox:${GITHUB_SHA})
+              run: docker logs $CONTAINER_ID
 
             # Step 10: Test /version endpoint
             - name: Test /version endpoint
