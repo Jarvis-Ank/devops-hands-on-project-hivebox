@@ -3,6 +3,8 @@
 [![Telegram Group](https://img.shields.io/badge/Telegram_Group-%232ca5e0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/DevOpsHive/985)
 [![Fork on GitHub](https://img.shields.io/badge/Fork_On_GitHub-%2336465D?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DevOpsHiveHQ/devops-hands-on-project-hivebox/fork)
 
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Jarvis-Ank/devops-hands-on-project-hivebox/badge)](https://scorecard.dev/viewer/?uri=github.com/Jarvis-Ank/devops-hands-on-project-hivebox)
+
 # HiveBox - DevOps End-to-End Hands-On Project
 
 <p align="center">
@@ -80,4 +82,20 @@ Here is a pre-start checklist:
 6. git initialized locally and pulled from main branch. 
 
 
-  
+<details>
+<summary>
+    <b> Phase 3 - Completion Date 9/20/2025 </b>
+</summary>
+<br>
+
+1. Pylint and Hadolint used for linting the code and dockerfile.
+2. OpenSenseMap API seems to be not working as expected, hence used different API from ```https://open-meteo.com/``` works similar to open sense.
+3. Changes done specific to Openmeto API, used average temperature from 3 locations instead of the sensbox average temperature
+4. Added ```/version``` and ```/temperature``` endpoints.
+5. Containerized using docker.
+6. Restructured the folders and files, added ```requirements```, ```.gitignore```, ```.dockerignore```, ```LICENSE``` etc.
+7. Created github workflow [```ci.yml```], linting for dockerfile, and code, build and test.
+8. Setup [OpenSSF Scorecard](https://securityscorecards.dev/#using-the-github-action) and fixed few possible issues. Since this project only have one active maintainer and few issues can only be resolved if a team is there like the code review which a single user can't do.
+
+> Phase -3 took a good amount of time to complete as fixing the pipeline till it worked first time. One issue faced during pipeline fixing was api ```/temperature``` endpoint specifically giving 500 Error, this seems to be an issue with the endpoint calling outside url of open-meto, for now this has been bypassed. More fixes and improvements will be done as progress towards next phases.
+
