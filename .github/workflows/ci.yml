@@ -54,6 +54,8 @@ jobs:
 
             # Step 7: Run unit tests using pytest
             - name: Run unit tests
+              env:
+                METEO_API_URL: "http://dummy-url-for-testing.com"
               run: python -m pytest tests/unit/ -v
 
             # Step 8: Run container in background for testing
