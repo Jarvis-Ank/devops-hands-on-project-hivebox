@@ -4,8 +4,8 @@ import os
 import statistics
 from fastapi import FastAPI, HTTPException
 from prometheus_fastapi_instrumentator import Instrumentator
-from config import settings
 import httpx
+from config import settings
 
 app = FastAPI()
 
