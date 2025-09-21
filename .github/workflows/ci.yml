@@ -39,13 +39,13 @@ jobs:
               uses: hadolint/hadolint-action@v3.1.0
               with:
                    dockerfile: Dockerfile
-                   
+
             # Step to scan k8s manifests
             - name: Scan Kubernetes manifests with Terrascan
-              uses: accurics/terrascan-action@v1.4.2
+              uses: tenable/terrascan-action@main
               with:
                  iac_type: 'k8s'
-                 iac_path: 'k8s'
+                 path: 'k8s'
                  only_warn: true
 
             # Step 6: Build Docker image
