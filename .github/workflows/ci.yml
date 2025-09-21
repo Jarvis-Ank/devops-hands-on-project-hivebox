@@ -42,10 +42,10 @@ jobs:
 
             # Step to scan k8s manifests
             - name: Scan Kubernetes manifests with Terrascan
-              uses: tenable/terrascan-action@main
+              uses: tenable/terrascan-action@v1
               with:
                  iac_type: 'k8s'
-                 path: 'k8s'
+                 iac_dir: 'k8s'
                  only_warn: true
 
             # Step 6: Build Docker image
