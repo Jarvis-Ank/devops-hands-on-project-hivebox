@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hivebox-ingress
+spec:
+  ingressClassName: nginx # This is the standard class for the Kind Nginx Ingress
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: hivebox-service # Sends traffic to our service
+            port:
+              number: 80 # The port defined in our service
