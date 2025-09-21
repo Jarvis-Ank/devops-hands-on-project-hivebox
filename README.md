@@ -82,6 +82,7 @@ Here is a pre-start checklist:
 6. git initialized locally and pulled from main branch. 
 
 
+</details>
 <details>
 <summary>
     <b> Phase 3 - Completion Date 9/20/2025 </b>

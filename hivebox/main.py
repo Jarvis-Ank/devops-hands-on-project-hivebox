@@ -3,6 +3,8 @@ from datetime import datetime, timezone
 import os
 import statistics
 from fastapi import FastAPI, HTTPException
+from prometheus_fastapi_instrumentator import Instrumentator
+from config import settings
 import httpx
 
 app = FastAPI()
@@ -12,6 +14,8 @@ LOCATIONS = [
     {"lat": 48.85, "lon": 2.35},    # Paris
     {"lat": 41.90, "lon": 12.49}    # Rome
 ]
+#instrument the app
+Instrumentator().instrument(app).expose(app)
 
 @app.get("/")
 async def root():
@@ -48,7 +52,7 @@ async def get_temperature():
 
     async with httpx.AsyncClient() as client:
         for loc in LOCATIONS:
-            url = f"https://api.open-meteo.com/v1/forecast?latitude={
+            url = f"{settings.METEO_API_URL}?latitude={
                 loc['lat']}&longitude={loc['lon']}&current=temperature_2m"
             r = await client.get(url)
             if r.status_code != 200:
@@ -69,8 +73,15 @@ async def get_temperature():
                             detail="No fresh temperature data available (older than 1 hour).")
 
     avg_temp = statistics.mean(temps)
+    if avg_temp < 10:
+        status = "Too Cold"
+    elif avg_temp <= 36:
+        status = "Good"
+    else:
+        status = "Too Hot"
     return {
         "average_temperature": avg_temp,
         "sources_used":len(temps),
-        "timestamp_checked":now.isoformat()
+        "timestamp_checked":now.isoformat(),
+        "status": status
     }

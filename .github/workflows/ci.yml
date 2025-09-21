@@ -39,6 +39,14 @@ jobs:
               uses: hadolint/hadolint-action@v3.1.0
               with:
                    dockerfile: Dockerfile
+                   
+            # Step to scan k8s manifests
+            - name: Scan Kubernetes manifests with Terrascan
+              uses: accurics/terrascan-action@v1.4.2
+              with:
+                 iac_type: 'k8s'
+                 iac_path: 'k8s'
+                 only_warn: true
 
             # Step 6: Build Docker image
             - name: Build Docker image
@@ -51,7 +59,9 @@ jobs:
             # Step 8: Run container in background for testing
             - name: Run container
               run: |
-                CONTAINER_ID=$(docker run -d -p 8000:8000 hivebox:${GITHUB_SHA::7})
+                echo "METEO_API_URL=${{ secrets.METEO_API_URL }}" > .env.ci
+
+                CONTAINER_ID=$(docker run -d -p 8000:8000 --env-file .env.ci hivebox:${GITHUB_SHA::7})
                 echo "CONTAINER_ID=$CONTAINER_ID" >> $GITHUB_ENV
                 sleep 15
 
